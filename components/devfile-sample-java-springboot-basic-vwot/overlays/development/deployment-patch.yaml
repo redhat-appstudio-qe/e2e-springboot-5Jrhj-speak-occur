@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: devfile-sample-java-springboot-basic-vwot
+  namespace: e2e-demos-pmco-tenant
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images-protected@sha256:f6186c77dae5d3d259dd1159cc19aca9e3a5ff67df70960c702a6905af12e065
+        name: my-java-springboot
+        resources: {}
+status: {}
