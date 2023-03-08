@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-java-springboot-basic-vwot
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-java-springboot-basic-vwot
+    app.kubernetes.io/part-of: e2e-springboot
+  name: devfile-sample-java-springboot-basic-vwot
+  namespace: e2e-demos-pmco-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-springboot-app
+      app.kubernetes.io/instance: devfile-sample-java-springboot-basic-vwot
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: java-springboot-app
+        app.kubernetes.io/instance: devfile-sample-java-springboot-basic-vwot
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images-protected:5Jrhj-devfile-sample-java-springboot-basic-vwot
+        name: my-java-springboot
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 300Mi
+          requests:
+            cpu: 10m
+            memory: 180Mi
+status: {}
